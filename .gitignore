@@ -1,0 +1,6 @@
+deps.txt
+__pycache__/
+.idea
+pkg
+src
+dropshare-git*

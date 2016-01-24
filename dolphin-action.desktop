@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=*;
+Actions=CopyPublicLink
+Encoding=UTF-8
+Version=1.0
+
+[Desktop Action CopyPublicLink]
+Name=Share with Dropbox
+Icon=dropbox
+Exec=dropshare %f`

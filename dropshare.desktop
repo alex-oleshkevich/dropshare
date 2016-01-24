@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=dropshare
+GenericName=Dropbox Sharer
+Comment=Shares file with Dropbox
+Exec=dropshare %U
+Terminal=false
+Icon=dropshare.svg
+Type=Application
+Categories=Network;
+StartupNotify=false
