@@ -1,6 +1,6 @@
 pkgbase=dropshare
 pkgname=${pkgbase}-git
-pkgver=r1.3edf97b
+pkgver=r3.8fa5fd3
 pkgrel=1
 pkgdesc="Simple file sharer to Dropbox"
 arch=('any')
