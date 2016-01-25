@@ -3,6 +3,7 @@ import configparser
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import subprocess
 import threading
+import webbrowser
 from PyQt5.QtCore import QUrl, QCoreApplication
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
@@ -38,7 +39,7 @@ def get_token():
 
 def notify(title, message, type='dialog-information'):
     notify2.init('dropshare')
-    notify2.Notification(title, message, type).show()
+    return notify2.Notification(title, message, type)
 
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -83,7 +84,7 @@ def http_server():
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
-        notify('Error', 'No file to share')
+        notify('Error', 'No file to share').show()
         print('No file to share')
         sys.exit()
 
@@ -118,9 +119,12 @@ if __name__ == '__main__':
         file = sys.argv[1]
         if not os.path.exists(file):
             message = 'dropshare: file does not exist: ' + file
-            notify('Error', message, 'dialog-error')
+            notify('Error', message, 'dialog-error').show()
             print(message)
             sys.exit(1)
+
+        notification = notify('Sharing...', 'File "' + file + '" is uploading', 'cloud-upload')
+        notification.show()
 
         share_path = '/' + os.path.basename(file)
         client = dropbox.Dropbox(token)
@@ -131,6 +135,10 @@ if __name__ == '__main__':
         p = subprocess.Popen(['xclip', '-selection', 'c'], stdin=subprocess.PIPE, close_fds=True)
         p.communicate(input=link.encode('utf-8'))
 
-        notify('Shared!', 'File "' + file + '" has been shared: ' + link, 'dialog-success')
+        notification.close()
+
+        notification = notify('Shared!', 'File "' + file + '" has been shared: ' + link, 'dialog-ok')
+        notification.show()
         print('Shared: ' + link)
+
         sys.exit()
