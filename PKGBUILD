@@ -6,7 +6,7 @@ pkgdesc="Simple file sharer to Dropbox"
 arch=('any')
 license=('MIT')
 url='https://github.com/alex-oleshkevich/dropshare'
-makedepends=('git' 'python3' 'python-dropbox' 'xclip' 'python-notify2')
+makedepends=('git' 'python3' 'python-dropbox' 'xclip' 'python-notify2' 'python-pyqt5')
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 install=
@@ -42,5 +42,6 @@ package() {
 	install -D -m644 ${srcdir}/${pkgname}/icon.svg ${pkgdir}/usr/share/icons/hicolor/48x48/apps/dropshare.svg
 	install -D -m644 ${srcdir}/${pkgname}/icon.svg ${pkgdir}/usr/share/icons/hicolor/64x64/apps/dropshare.svg
 	install -D -m644 ${srcdir}/${pkgname}/icon.svg ${pkgdir}/usr/share/icons/hicolor/128x128/apps/dropshare.svg
+	install -D -m644 ${srcdir}/${pkgname}/authwindow.ui ${pkgdir}/usr/share/dropshare/authwindow.ui
 }
 

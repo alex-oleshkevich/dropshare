@@ -14,6 +14,11 @@ import notify2
 APP_KEY = 'cyuugboyrbyqx8t'
 CONFIG = os.getenv('HOME') + '/.dropshare.conf'
 
+ui_files = ('authwindow.ui', '/usr/share/dropshare/authwindow.ui')
+
+def find_file(file_set):
+    return [file for file in file_set if os.path.exists(file)][0]
+
 def write_config(params):
     config = configparser.ConfigParser()
     config.add_section('auth')
@@ -49,7 +54,7 @@ class AuthWindow(QMainWindow):
         self.server = server
 
     def initUI(self):
-        loadUi('authwindow.ui', self)
+        loadUi(find_file(ui_files), self)
         url = QUrl('https://www.dropbox.com/1/oauth2/authorize?redirect_uri=http://localhost:30000&response_type=token&client_id=%s' % APP_KEY)
         self.webView.load(url)
         self.webView.urlChanged.connect(self.onUrlChange)
