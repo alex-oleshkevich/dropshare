@@ -1,6 +1,6 @@
 pkgbase=dropshare
 pkgname=${pkgbase}-git
-pkgver=r4.1c6ad33
+pkgver=r5.56185ec
 pkgrel=1
 pkgdesc="Simple file sharer to Dropbox"
 arch=('any')
@@ -27,9 +27,6 @@ pkgver() {
 }
 
 package() {
-    ls -l
-    make install
-    exit
     cd "$pkgname"
 	install -D -m555 ${srcdir}/${pkgname}/dropshare.py ${pkgdir}/usr/bin/dropshare
 	install -D -m644 ${srcdir}/${pkgname}/dropshare.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
