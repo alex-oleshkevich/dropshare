@@ -1,6 +1,6 @@
 pkgbase=dropshare
 pkgname=${pkgbase}-git
-pkgver=r3.8fa5fd3
+pkgver=r4.1c6ad33
 pkgrel=1
 pkgdesc="Simple file sharer to Dropbox"
 arch=('any')
@@ -10,13 +10,11 @@ makedepends=('git' 'python3' 'python-dropbox' 'xclip' 'python-notify2' 'python-p
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 install=
-
 source=(
     "${pkgname}"::"git+https://github.com/alex-oleshkevich/$pkgbase.git"
 )
 md5sums=(
     'SKIP'
-
 )
 
 pkgver() {
@@ -28,11 +26,10 @@ pkgver() {
   )
 }
 
-prepare() {
-    kdeprefix=$(kde4-config --localprefix)
-}
-
 package() {
+    ls -l
+    make install
+    exit
     cd "$pkgname"
 	install -D -m555 ${srcdir}/${pkgname}/dropshare.py ${pkgdir}/usr/bin/dropshare
 	install -D -m644 ${srcdir}/${pkgname}/dropshare.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
