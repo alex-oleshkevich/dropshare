@@ -1,12 +1,12 @@
 pkgbase=dropshare
 pkgname=${pkgbase}-git
-pkgver=r4.f9e7e95
+pkgver=r1.3edf97b
 pkgrel=1
 pkgdesc="Simple file sharer to Dropbox"
 arch=('any')
 license=('MIT')
 url='https://github.com/alex-oleshkevich/dropshare'
-makedepends=('git' 'python3' 'python-dropbox' 'python-pyperclip' 'python-notify2')
+makedepends=('git' 'python3' 'python-dropbox' 'xclip' 'python-notify2')
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 install=
