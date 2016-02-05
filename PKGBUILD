@@ -1,6 +1,6 @@
 pkgbase=dropshare
 pkgname=${pkgbase}-git
-pkgver=r5.56185ec
+pkgver=r8.fe35de7
 pkgrel=1
 pkgdesc="Simple file sharer to Dropbox"
 arch=('any')
@@ -11,7 +11,7 @@ provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 install=
 source=(
-    "${pkgname}"::"git+https://github.com/alex-oleshkevich/$pkgbase.git"
+    "${pkgname}"::"https://github.com/alex-oleshkevich/$pkgbase.git"
 )
 md5sums=(
     'SKIP'
